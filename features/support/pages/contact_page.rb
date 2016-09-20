@@ -26,8 +26,22 @@ class ContactPage < GenericPage
   end
 
   def click_send_btn
-    binding.pry
+    get_send_btn = @browser.input(value: "Send")
+    get_send_btn.click
+
   end
 
+  def check_error_message
+    check_error_message = @browser.div(class: "wpcf7-response-output wpcf7-display-none wpcf7-validation-errors")
+    check_error_message.exists?
+  end
+
+  def check_error_message_for_each_field
+    check_error_messages = @browser.spans(class: "wpcf7-not-valid-tip")
+    if check_error_messages.length == 3
+      true
+    end
+    # binding.pry
+  end
 
 end

@@ -23,5 +23,6 @@ When(/^I submit just an e\-mail address and some message text and all other inpu
 end
 
 Then(/^I should see errors about the other required fields$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  @app.contact_page.check_error_message
+  @app.contact_page.check_error_message_for_each_field
 end
