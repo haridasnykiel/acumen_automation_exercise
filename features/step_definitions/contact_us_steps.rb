@@ -3,7 +3,7 @@ Given(/^I am on the Acumen home page$/) do
 end
 
 When(/^I navigate to the Contact Us page$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  @app.contact_page.visit
 end
 
 Then(/^I should see an accurate postcode “TW9 1HY”$/) do

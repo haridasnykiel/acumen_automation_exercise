@@ -9,5 +9,5 @@ end
 # end
 
 at_exit do
-  browser.close
+  # browser.close
 end
