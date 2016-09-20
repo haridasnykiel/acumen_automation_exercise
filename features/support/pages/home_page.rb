@@ -1,4 +1,5 @@
 class HomePage < GenericPage
+  
   def initialize browser
     @browser = browser
   end
@@ -6,5 +7,5 @@ class HomePage < GenericPage
   def visit
     @browser.goto "http://www.acumenci.com/"
   end
-  
+
 end

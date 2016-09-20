@@ -15,4 +15,19 @@ class ContactPage < GenericPage
     # binding.pry
   end
 
+  def add_email
+    get_email_field = @browser.input(name: "your-email")
+    get_email_field.send_keys(TESTDATA["email"])
+  end
+
+  def add_message
+    get_message = @browser.text_field(name: "your-message")
+    get_message.send_keys(TESTDATA["message"])
+  end
+
+  def click_send_btn
+    binding.pry
+  end
+
+
 end

@@ -16,8 +16,10 @@ Given(/^I am on the Acumen Contact Us page$/) do
   end
 end
 
-When(/^I submit just an e\-mail address and some message text And all other input fields are blank$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+When(/^I submit just an e\-mail address and some message text and all other input fields are blank$/) do
+  @app.contact_page.add_email
+  @app.contact_page.add_message
+  @app.contact_page.click_send_btn
 end
 
 Then(/^I should see errors about the other required fields$/) do
