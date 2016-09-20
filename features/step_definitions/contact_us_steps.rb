@@ -11,7 +11,9 @@ Then(/^I should see an accurate postcode “TW9 1HY”$/) do
 end
 
 Given(/^I am on the Acumen Contact Us page$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  if @app.contact_page.url == "http://www.acumenci.com/contact-us/"
+    true
+  end
 end
 
 When(/^I submit just an e\-mail address and some message text And all other input fields are blank$/) do
