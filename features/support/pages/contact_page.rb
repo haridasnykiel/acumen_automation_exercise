@@ -4,43 +4,31 @@ class ContactPage < GenericPage
   end
 
   def visit
-    contact_us = @browser.ul(id: 'menu').li(id: 'menu-item-497')
-    contact_us.when_present.click
-
+    @browser.a(text: 'Contact Us').when_present.click
   end
 
   def check_postcode
-    postcode_p = @browser.div(class: 'nine column').p
-    postcode_p.inner_html.include? "TW9 1HY"
-    # binding.pry
+    @browser.div(class: 'nine column').p.inner_html.include? "TW9 1HY"
   end
 
   def add_email
-    get_email_field = @browser.input(name: "your-email")
-    get_email_field.send_keys(TESTDATA["email"])
+    @browser.text_field(name: "your-email").set(TESTDATA["email"])
   end
 
   def add_message
-    get_message = @browser.text_field(name: "your-message")
-    get_message.send_keys(TESTDATA["message"])
+    @browser.text_field(name: "your-message").set(TESTDATA["message"])
   end
 
   def click_send_btn
-    get_send_btn = @browser.input(value: "Send")
-    get_send_btn.click
-
+    @browser.input(value: "Send").click
   end
 
   def check_error_message
-    check_error_message = @browser.div(class: "wpcf7-response-output wpcf7-display-none wpcf7-validation-errors")
-    check_error_message.exists?
+    @browser.div(class: "wpcf7-response-output wpcf7-display-none wpcf7-validation-errors").wait_until_present
   end
 
   def check_error_message_for_each_field
-    check_error_messages = @browser.spans(class: "wpcf7-not-valid-tip")
-    if check_error_messages.length == 3
-      true
-    end
+    Watir::Wait.until(10) {@browser.spans(class: "wpcf7-not-valid-tip").length == 3}
     # binding.pry
   end
 
